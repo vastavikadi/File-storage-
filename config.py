@@ -15,7 +15,7 @@ API_ID = int(os.environ.get("APP_ID", "29478593"))
 API_HASH = os.environ.get("API_HASH", "24c3a9ded4ac74bab73cbe6dafbc8b3e")
 
 #Your db channel Id
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002166025521"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002219047037"))
 
 #OWNER ID
 OWNER_ID = int(os.environ.get("OWNER_ID", "6259443940"))
@@ -34,10 +34,10 @@ TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
 
 # Default admin IDs
-admins_list = "6259443940"
+admins_list = "6259443940, 6331067820, 5053815620"
 
 # Start message
-START_MSG = os.environ.get("START_MESSAGE", "Hᴇᴍʟᴏ {first}\n\nᴛʜɪs ɪs ᴀ ᴘʀɪᴠᴀᴛᴇ ғɪʟᴇ sᴛᴏʀᴀɢᴇ ʙᴏᴛ sᴛᴇʀɴʀɪᴛᴛᴇʀ.\n\nClick More Info to know more")
+START_MSG = os.environ.get("START_MESSAGE", "Hᴇᴍʟᴏ {first}\n\nᴛʜɪs ɪs ᴀ ᴘʀɪᴠᴀᴛᴇ ғɪʟᴇ sᴛᴏʀᴀɢᴇ ʙᴏᴛ ғᴏʀ sᴛᴇʀɴʀɪᴛᴛᴇʀ.\n\nClick More Info to know more")
 
 # Retrieve admin IDs from environment variables, if any, otherwise use defaults
 admins_from_env = os.environ.get("ADMINS", admins_list)
@@ -55,7 +55,7 @@ CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "Aɴɪᴍᴇ Fɪʟᴇs ʙʏ : 
  @OtakusMotel_STR")
 
 #set True if you want to prevent users from forwarding files from bot
-PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "True") == "True" else False
+PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', None) == "True" else False
 
 #Set true if you want Disable your Channel Posts Share button
 DISABLE_CHANNEL_BUTTON = os.environ.get("DISABLE_CHANNEL_BUTTON", "True") == 'True'
