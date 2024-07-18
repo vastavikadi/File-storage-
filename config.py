@@ -7,10 +7,10 @@ TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "6776572844:AAEnthlAAl2_8b1WQ0oDQi
 # "6515426684:AAF8VimPWiDfpeWWyMkqw26snbFCVTSnaXM"
 
 # api id
-API_ID = int(os.environ.get("APP_ID", "29478593"))
+API_ID = int(os.environ.get("APP_ID", "6435225"))
 
 # api hash
-API_HASH = os.environ.get("API_HASH", "24c3a9ded4ac74bab73cbe6dafbc8b3e")
+API_HASH = os.environ.get("API_HASH", "4e984ea35f854762dcde906dce426c2d")
 
 # Your db channel Id
 # -1002219047037
