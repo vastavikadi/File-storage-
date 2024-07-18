@@ -2,11 +2,9 @@ import os
 import logging
 from logging.handlers import RotatingFileHandler
 
-
-
 # token
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "6776572844:AAEnthlAAl2_8b1WQ0oDQiav07tzw38_Njg")
- # "6515426684:AAF8VimPWiDfpeWWyMkqw26snbFCVTSnaXM"
+# "6515426684:AAF8VimPWiDfpeWWyMkqw26snbFCVTSnaXM"
 
 # api id
 API_ID = int(os.environ.get("APP_ID", "29478593"))
@@ -14,29 +12,27 @@ API_ID = int(os.environ.get("APP_ID", "29478593"))
 # api hash
 API_HASH = os.environ.get("API_HASH", "24c3a9ded4ac74bab73cbe6dafbc8b3e")
 
-#Your db channel Id
+# Your db channel Id
 CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002219047037"))
 
-#OWNER ID
+# OWNER ID
 OWNER_ID = int(os.environ.get("OWNER_ID", "6259443940"))
 
-#Port
+# Port
 PORT = os.environ.get("PORT", "8080")
 
-#Database 
+# Database
 DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://knight_rider:GODGURU12345@knight.jm59gu9.mongodb.net/?retryWrites=true&w=majority")
 DB_NAME = os.environ.get("DATABASE_NAME", "paradoXstr")
 
-#force sub channel id, if you want enable force sub
+# force sub channel id, if you want enable force sub
 # Fsub 1
 FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1002149105272"))
 
 # Fsub 2
 FORCE_SUB_CHANNEL2 = int(os.environ.get("FORCE_SUB_CHANNEL2", "-1002019228287"))
 
-
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
-
 
 # Default admin IDs
 admins_list = "6259443940, 6331067820, 5053815620"
@@ -52,17 +48,16 @@ try:
 except ValueError:
     raise Exception("Your Admins list does not contain valid integers.")
 
-#Force sub message 
-FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hemlo {first}\n\n<b>ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ᴀɴʏ ᴀɴɪᴍᴇ ғɪʟᴇ, Yᴏᴜ ɴᴇᴇᴅ ᴛᴏ ᴊᴏɪɴ ɪn ᴏᴜʀ ᴀɴɪᴍᴇ ɢᴄ & ᴄʜᴀᴛ ɢᴄ to ᴜsᴇ ᴍᴇ\n\n Jᴏɪɴ ᴛʜᴇ ɢɪᴠᴇɴ ᴄʜᴀɴɴᴇʟ & ɢʀᴏᴜᴘ ᴄʜᴀᴛ</b>")
+# Force sub message
+FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hemlo {first}\n\n<b>ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ᴀɴʏ ᴀɴɪᴍᴇ ғɪʟᴇ, Yᴏᴜ ɴᴇᴇᴅ ᴛᴏ ᴊᴏɪɴ ɪɴ ᴏᴜʀ ᴀɴɪᴍᴇ ɢᴄ & ᴄʜᴀᴛ ɢᴄ ᴛᴏ ᴜsᴇ ᴍᴇ\n\n Jᴏɪɴ ᴛʜᴇ ɢɪᴠᴇɴ ᴄʜᴀɴɴᴇʟ & ɢʀᴏᴜᴘ ᴄʜᴀᴛ</b>")
 
-#set your Custom Caption here, Keep None for Disable Custom Caption
-CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "Aɴɪᴍᴇ Fɪʟᴇs ʙʏ : @AnimePlaza_STR \n
- @OtakusMotel_STR")
+# Set your Custom Caption here, Keep None to Disable Custom Caption
+CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "Aɴɪᴍᴇ Fɪʟᴇs ʙʏ : @AnimePlaza_STR \n @OtakusMotel_STR")
 
-#set True if you want to prevent users from forwarding files from bot
+# Set True if you want to prevent users from forwarding files from bot
 PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', None) == "True" else False
 
-#Set true if you want Disable your Channel Posts Share button
+# Set true if you want Disable your Channel Posts Share button
 DISABLE_CHANNEL_BUTTON = os.environ.get("DISABLE_CHANNEL_BUTTON", "True") == 'True'
 
 BOT_STATS_TEXT = "<b>ʙᴏᴛ ᴜᴘᴛɪᴍᴇ</b>⥤{uptime}"
