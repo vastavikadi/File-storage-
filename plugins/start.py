@@ -118,8 +118,14 @@ async def not_joined(client: Client, message: Message):
     buttons = [
         [
             InlineKeyboardButton(
-                "Join Channel",
+                "Join GC 1",
                 url = client.invitelink)
+        ]
+    ],
+        [
+            InlineKeyboardButton(
+                "Join GC 2",
+                url ='https://t.me/paradoxdump')
         ]
     ]
     try:
