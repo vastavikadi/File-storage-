@@ -57,11 +57,11 @@ class Bot(Client):
         try:
             db_channel = await self.get_chat(CHANNEL_ID)
             self.db_channel = db_channel
-            test = await self.send_message(chat_id=db_channel.id, text="Test Message")
-            await test.delete()
+            start_time = self.uptime.strftime('%Y-%m-%d %H:%M:%S')
+            await self.send_message(chat_id=db_channel.id, text=f"Bot Started {start_time}")
         except Exception as e:
             self.LOGGER(__name__).warning(e)
-            self.LOGGER(__name__).warning(f"Make Sure bot is Admin in DB Channel, and Double check the CHANNEL_ID Value, Current Value {CHANNEL_ID}")
+            self.LOGGER(__name__).warning(f"Unable to send start message to DB Channel, Current Value {CHANNEL_ID}")
             self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/paradoxdump for support")
             sys.exit()
 
