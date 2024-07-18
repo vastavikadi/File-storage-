@@ -119,19 +119,31 @@ from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 @Client.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     buttons = [
-        [
-            InlineKeyboardButton(
-                "Join GC 1",
-                url=client.invitelink
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                "Join GC 2",
-                url='https://t.me/paradoxdump'
-            )
-        ]
+    [
+        InlineKeyboardButton(
+            "Join GC 1",
+            url=client.invitelink
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            "Join Anime Plaza",
+            url='https://t.me/animeplaza_str'
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            "Join Cinema Channel",
+            url='https://t.me/CinemaStack_Official'
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            "Join Otaku Chat GC",
+            url='https://t.me/OtakusMotel_STR'
+        )
     ]
+]
     try:
         buttons.append(
             [
