@@ -27,8 +27,6 @@ class Bot(Client):
         await super().start()
         usr_bot_me = await self.get_me()
         self.uptime = datetime.now()
-        
-        self.LOGGER(__name__).info(f"Bot started at {self.uptime}")
 
         if FORCE_SUB_CHANNEL:
             try:
