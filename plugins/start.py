@@ -136,13 +136,13 @@ async def not_joined(client: Client, message: Message):
             "Join Otaku Chat GC",
             url='https://t.me/OtakusMotel_STR'
         )
-    ]
+    ],
     [
         InlineKeyboardButton(
             "Join GC 1",
             url=client.invitelink
         )
-    ],
+    ]
 ]
     try:
         buttons.append(
