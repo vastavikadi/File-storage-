@@ -3,6 +3,9 @@ from bot import Bot
 from config import OWNER_ID
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
+from pyrogram import Client
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+
 @Bot.on_callback_query()
 async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
@@ -29,11 +32,18 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [InlineKeyboardButton("Join Anime Plaza", url='https://t.me/animeplaza_str')],
-[InlineKeyboardButton("Join our group chat", url='https://t.me/OtakusMotel_STR')],
+                    [InlineKeyboardButton("Join our group chat", url='https://t.me/OtakusMotel_STR')],
                     [InlineKeyboardButton("🔒 Close", callback_data="close")]
                 ]
-            )
+            ),
+            parse_mode='Markdown'
         )
+    elif data == "close":
+        await query.message.delete()
+        try:
+            await query.message.reply_to_message.delete()
+        except:
+            pass
     elif data == "close":
         await query.message.delete()
         try:
