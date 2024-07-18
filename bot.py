@@ -27,6 +27,8 @@ class Bot(Client):
         await super().start()
         usr_bot_me = await self.get_me()
         self.uptime = datetime.now()
+        
+        self.LOGGER(__name__).info(f"Bot started at {self.uptime}")
 
         if FORCE_SUB_CHANNEL:
             try:
@@ -57,6 +59,8 @@ class Bot(Client):
         try:
             db_channel = await self.get_chat(CHANNEL_ID)
             self.db_channel = db_channel
+            self.LOGGER(__name__).info(f"DB Channel: {db_channel}")
+
             start_time = self.uptime.strftime('%Y-%m-%d %H:%M:%S')
             await self.send_message(chat_id=db_channel.id, text=f"Bot Started {start_time}")
         except Exception as e:
