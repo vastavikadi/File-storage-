@@ -46,3 +46,8 @@ async def get_db_response_time() -> float:
     await db.command("ping")
     end = time.time()
     return round((end - start) * 1000, 2)  # DB response time in milliseconds
+
+@Bot.on_message(filters.private & filters.incoming)
+async def useless(_,message: Message):
+    if USER_REPLY_TEXT:
+        await message.reply(USER_REPLY_TEXT)
