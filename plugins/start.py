@@ -113,32 +113,37 @@ REPLY_ERROR = """<code>Use this command as a replay to any telegram message with
 
     
     
-@Bot.on_message(filters.command('start') & filters.private)
+from pyrogram import Client, filters
+from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
+
+@Client.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     buttons = [
         [
             InlineKeyboardButton(
                 "Join GC 1",
-                url = client.invitelink)
-        ]
-    ],
+                url=client.invitelink
+            )
+        ],
         [
             InlineKeyboardButton(
                 "Join GC 2",
-                url ='https://t.me/paradoxdump')
+                url='https://t.me/paradoxdump'
+            )
         ]
     ]
     try:
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text = 'Try Again',
-                    url = f"https://t.me/{client.username}?start={message.command[1]}"
+                    text='Try Again',
+                    url=f"https://t.me/{client.username}?start={message.command[1]}"
                 )
             ]
         )
     except IndexError:
-        pass
+        pass  reply_markup=InlineKeyboardMarkup(buttons)
+    )
 
     await message.reply(
         text = FORCE_MSG.format(
