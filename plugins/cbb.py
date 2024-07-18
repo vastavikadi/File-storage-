@@ -30,7 +30,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [InlineKeyboardButton("Join Anime Plaza", url='https://t.me/animeplaza_str')],
-[InlineKeyboardButton("Join our group chat", url='https://t.me/OtakusMotel_STR')],
+[InlineKeyboardButton("Join Cinema Channel", url='https://t.me/CinemaStack_Official')],
                     [InlineKeyboardButton("Close", callback_data="close")]
                 ]
             )
