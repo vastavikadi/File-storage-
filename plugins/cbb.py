@@ -31,6 +31,8 @@ async def cb_handler(client: Bot, query: CallbackQuery):
                 [
                     [InlineKeyboardButton("Join Anime Plaza", url='https://t.me/animeplaza_str')],
 [InlineKeyboardButton("Join Cinema Channel", url='https://t.me/CinemaStack_Official')],
+[InlineKeyboardButton("Join Otaku Chat GC", url='https://t.me/OtakusMotel_STR')],
+[InlineKeyboardButton("Join Sternritter", url='https://t.me/sternriyal')],
                     [InlineKeyboardButton("Close", callback_data="close")]
                 ]
             )
