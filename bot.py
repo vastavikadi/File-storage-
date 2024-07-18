@@ -56,6 +56,7 @@ class Bot(Client):
                 self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/paradoxdump for support")
                 sys.exit()
 
+//
         try:
             db_channel = await self.get_chat(CHANNEL_ID)
             self.db_channel = db_channel
@@ -68,7 +69,7 @@ class Bot(Client):
             self.LOGGER(__name__).warning(f"Unable to send start message to DB Channel, Current Value {CHANNEL_ID}")
             self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/paradoxdump for support")
             sys.exit()
-
+//
         self.set_parse_mode(ParseMode.HTML)
         self.LOGGER(__name__).info(f"Bot Running..!\n\nCreated by \nhttps://t.me/paradoxdump")
         self.LOGGER(__name__).info(f""" \n\n       
