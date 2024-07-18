@@ -1,4 +1,3 @@
-
 from aiohttp import web
 from plugins import web_server
 
@@ -41,7 +40,7 @@ class Bot(Client):
                 self.LOGGER(__name__).warning("Bot can't Export Invite link from Force Sub Channel!")
                 self.LOGGER(__name__).warning(f"Please Double check the FORCE_SUB_CHANNEL value and Make sure Bot is Admin in channel with Invite Users via Link Permission, Current Force Sub Channel Value: {FORCE_SUB_CHANNEL}")
 
-if FORCE_SUB_CHANNEL2:
+        if FORCE_SUB_CHANNEL2:
             try:
                 link = (await self.get_chat(FORCE_SUB_CHANNEL2)).invite_link
                 if not link:
@@ -54,10 +53,11 @@ if FORCE_SUB_CHANNEL2:
                 self.LOGGER(__name__).warning(f"Please Double check the FORCE_SUB_CHANNEL2 value and Make sure Bot is Admin in channel with Invite Users via Link Permission, Current Force Sub Channel Value: {FORCE_SUB_CHANNEL2}")
                 self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/paradoxdump for support")
                 sys.exit()
+
         try:
             db_channel = await self.get_chat(CHANNEL_ID)
             self.db_channel = db_channel
-            test = await self.send_message(chat_id = db_channel.id, text = "Test Message")
+            test = await self.send_message(chat_id=db_channel.id, text="Test Message")
             await test.delete()
         except Exception as e:
             self.LOGGER(__name__).warning(e)
@@ -71,12 +71,13 @@ if FORCE_SUB_CHANNEL2:
  [PARADOX]
                                           """)
         self.username = usr_bot_me.username
-        #web-response
+
+        # web-response
         app = web.AppRunner(await web_server())
         await app.setup()
         bind_address = "0.0.0.0"
         await web.TCPSite(app, bind_address, PORT).start()
 
     async def stop(self, *args):
-  #      await super().stop()
+        await super().stop()
         self.LOGGER(__name__).info("Bot stopped.")
