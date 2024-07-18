@@ -142,7 +142,9 @@ async def not_joined(client: Client, message: Message):
             ]
         )
     except IndexError:
-        pass  reply_markup=InlineKeyboardMarkup(buttons)
+        pass
+
+reply_markup=InlineKeyboardMarkup(buttons)
     )
 
     await message.reply(
