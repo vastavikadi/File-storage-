@@ -1,4 +1,3 @@
-
 from pyrogram import __version__
 from bot import Bot
 from config import OWNER_ID
@@ -11,29 +10,30 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         await query.message.edit_text(
             text=(
                 "┏━━━━━━━━━━━━━━━━━┓\n"
-                "ㅤㅤ   ㅤ  <a href='https://t.me/official_str'>sᴛᴇʀɴʀɪᴛᴛᴇʀ</a>ㅤㅤㅤㅤㅤ\n"
+                "ㅤㅤ   ㅤ  [sᴛᴇʀɴʀɪᴛᴛᴇʀ](https://t.me/official_str)ㅤㅤㅤㅤㅤ\n"
                 "┗━━━━━━━━━━━━━━━━━┛\n\n"
                 "╔──────\n"
-                "╟ Owner: <a href='https://t.me/aryan_kadam'>Aryan Kadam</a>\n"
+                "╟ Owner: [Aryan Kadam](https://t.me/aryan_kadam)\n"
                 "╚──────\n"
                 "╔──────\n"
-                "╟ <a href='https://t.me/animeplaza_str'>Anime Plaza STR</a>\n"
+                "╟ [Anime Plaza STR](https://t.me/animeplaza_str)\n"
                 "╚──────\n"
                 "╔──────\n"
-                "╟ <a href='https://t.me/ongoing_str'>Ongoing Anime</a>\n"
+                "╟ [Ongoing Anime](https://t.me/ongoing_str)\n"
                 "╚──────\n"
                 "╔──────\n"
-                "╟ Dev: <a href='https://t.me/corpsealone'>ɢӈߋʂτ</a>\n"
+                "╟ Dev: [ɢӈߋʂτ](https://t.me/corpsealone)\n"
                 "╚──────"
             ),
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("Join Sternritter", url='https://t.me/sternriyal')],
+                    [InlineKeyboardButton("Join Anime Plaza STR", url='https://t.me/animeplaza_str')],
+[InlineKeyboardButton("Join our group chat", url='https://t.me/OtakusMotel_STR')],
                     [InlineKeyboardButton("🔒 Close", callback_data="close")]
                 ]
             ),
-            parse_mode='HTML'  # Ensure 'parse_mode' is set to 'HTML'
+            parse_mode='Markdown'  # Use 'Markdown' instead of 'HTML'
         )
     elif data == "close":
         await query.message.delete()
