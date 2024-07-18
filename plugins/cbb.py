@@ -28,12 +28,11 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("Join Anime Plaza STR", url='https://t.me/animeplaza_str')],
+                    [InlineKeyboardButton("Join Anime Plaza", url='https://t.me/animeplaza_str')],
 [InlineKeyboardButton("Join our group chat", url='https://t.me/OtakusMotel_STR')],
                     [InlineKeyboardButton("🔒 Close", callback_data="close")]
                 ]
-            ),
-            parse_mode='Markdown'  # Use 'Markdown' instead of 'HTML'
+            )
         )
     elif data == "close":
         await query.message.delete()
