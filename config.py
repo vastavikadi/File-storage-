@@ -61,7 +61,7 @@ except ValueError:
 FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hemlo {first}\n\n<b>ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ᴀɴʏ ᴀɴɪᴍᴇ ғɪʟᴇ, Yᴏᴜ ɴᴇᴇᴅ ᴛᴏ ᴊᴏɪɴ ɪɴ ᴏᴜʀ ᴀɴɪᴍᴇ ɢᴄ & ᴄʜᴀᴛ ɢᴄ ᴛᴏ ᴜsᴇ ᴍᴇ\n\n Jᴏɪɴ ᴛʜᴇ ɢɪᴠᴇɴ ᴄʜᴀɴɴᴇʟ & ɢʀᴏᴜᴘ ᴄʜᴀᴛ</b>")
 
 # Set your Custom Caption here, Keep None to Disable Custom Caption
-CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "Aɴɪᴍᴇ Fɪʟᴇs ʙʏ : @AnimePlaza_STR \n @OtakusMotel_STR")
+CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", None)
 
 # Set True if you want to prevent users from forwarding files from bot
 PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', None) == "True" else False
