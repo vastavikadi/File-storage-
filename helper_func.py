@@ -9,7 +9,7 @@ from pyrogram.errors import UserNotParticipant
 from pyrogram.enums import ChatMemberStatus
 from config import FORCE_SUB_CHANNEL2
 from config import FORCE_SUB_CHANNEL, ADMINS, FORCE_SUB_CHANNEL2
-from comfig import ADMINS
+from config import ADMINS
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram.errors import FloodWait
 
