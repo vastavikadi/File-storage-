@@ -4,7 +4,7 @@ from logging.handlers import RotatingFileHandler
 
 # token
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "6776572844:AAEnthlAAl2_8b1WQ0oDQiav07tzw38_Njg")
-# "6515426684:AAF8VimPWiDfpeWWyMkqw26snbFCVTSnaXM"
+
 
 # api id
 API_ID = int(os.environ.get("APP_ID", "6435225"))
@@ -31,7 +31,7 @@ DB_NAME = os.environ.get("DATABASE_NAME", "paradoXstr")
 FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1002092954715"))
 
 # Fsub 2
-FORCE_SUB_CHANNEL2 = int(os.environ.get("FORCE_SUB_CHANNEL2", "-1002019228287"))
+FORCE_SUB_CHANNEL2 = int(os.environ.get("FORCE_SUB_CHANNEL2", "-1002151903452"))
 
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
