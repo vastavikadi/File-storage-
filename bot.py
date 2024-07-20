@@ -6,6 +6,10 @@ from pyrogram import Client
 from pyrogram.enums import ParseMode
 import sys
 from datetime import datetime
+##
+import sys
+from pyrogram.enums import ChatMemberStatus  # Ensure correct import based on the Pyrogram version
+
 
 from config import API_HASH, API_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNEL, CHANNEL_ID, PORT, FORCE_SUB_CHANNEL2
 
