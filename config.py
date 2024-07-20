@@ -33,6 +33,14 @@ FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1002151903452"))
 # Fsub 2
 FORCE_SUB_CHANNEL2 = int(os.environ.get("FORCE_SUB_CHANNEL2", "-1002161598191"))
 
+#######
+CHANNEL_1_ID = -1002161598191
+CHANNEL_2_ID = -1002151903452
+
+CHANNEL_1_LINK = 'https://t.me/AnimePlaza_STR'
+CHANNEL_2_LINK = 'https://t.me/CinemaStack_Official'
+#######
+
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
 # Default admin IDs
