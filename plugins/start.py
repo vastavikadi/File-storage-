@@ -10,7 +10,10 @@ from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL
 from helper_func import subscribed, encode, decode, get_messages
 from database.database import add_user, del_user, full_userbase, present_user
 
-
+from pyrogram import Client, filters
+from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.errors import UserNotParticipant
+from config import CHANNEL_1_ID, CHANNEL_2_ID, CHANNEL_1_LINK, CHANNEL_2_LINK
 
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
@@ -113,59 +116,55 @@ REPLY_ERROR = """<code>Use this command as a replay to any telegram message with
 
     
     
-from pyrogram import Client, filters
-from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
+
+
+async def is_user_in_channels(client: Client, user_id: int) -> bool:
+    try:
+        member_1 = await client.get_chat_member(chat_id=CHANNEL_1_ID, user_id=user_id)
+        member_2 = await client.get_chat_member(chat_id=CHANNEL_2_ID, user_id=user_id)
+        if member_1.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]:
+            return False
+        if member_2.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]:
+            return False
+        return True
+    except UserNotParticipant:
+        return False
 
 @Client.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    buttons = [
-        [
-            InlineKeyboardButton(
-                "Join Anime Plaza",
-                url='https://t.me/animeplaza_str'
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                "Join Cinema Channel",
-                url='https://t.me/CinemaStack_Official'
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                "Join Otaku Chat GC",
-                url='https://t.me/OtakusMotel_STR'
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                "Join GC 1",
-                url=bot.invitelink1
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                "Join GC 2",
-                url=bot.invitelink2
-            )
-        ]
-    ]
-    try:
-        buttons.append(
+    user_id = message.from_user.id
+    if not await is_user_in_channels(client, user_id):
+        buttons = [
             [
                 InlineKeyboardButton(
-                    text='Try Again',
-                    url=f"https://t.me/{client.username}?start={message.command[1]}"
+                    "Join Anime Plaza",
+                    url=CHANNEL_1_LINK
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "Join Cinema Channel",
+                    url=CHANNEL_2_LINK
                 )
             ]
+        ]
+        try:
+            buttons.append(
+                [
+                    InlineKeyboardButton(
+                        text='Try Again',
+                        url=f"https://t.me/{client.username}?start={message.command[1]}"
+                    )
+                ]
+            )
+        except IndexError:
+            pass
+        await message.reply_text(
+            "Please join the channels below to use the bot:",
+            reply_markup=InlineKeyboardMarkup(buttons)
         )
-    except IndexError:
-        pass
-
-    await message.reply_text(
-        "Please join the channels below to use the bot:",
-        reply_markup=InlineKeyboardMarkup(buttons)
-    )
+    else:
+        await message.reply_text("You have access to use the bot now.")
 
 
     await message.reply(
