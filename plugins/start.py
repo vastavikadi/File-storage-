@@ -119,31 +119,37 @@ from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 @Client.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     buttons = [
-    [
-        InlineKeyboardButton(
-            "Join Anime Plaza",
-            url='https://t.me/animeplaza_str'
-        )
-    ],
-    [
-        InlineKeyboardButton(
-            "Join Cinema Channel",
-            url='https://t.me/CinemaStack_Official'
-        )
-    ],
-    [
-        InlineKeyboardButton(
-            "Join Otaku Chat GC",
-            url='https://t.me/OtakusMotel_STR'
-        )
-    ],
-    [
-        InlineKeyboardButton(
-            "Join GC 1",
-            url=client.invitelink
-        )
+        [
+            InlineKeyboardButton(
+                "Join Anime Plaza",
+                url='https://t.me/animeplaza_str'
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "Join Cinema Channel",
+                url='https://t.me/CinemaStack_Official'
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "Join Otaku Chat GC",
+                url='https://t.me/OtakusMotel_STR'
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "Join GC 1",
+                url=bot.invitelink1
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "Join GC 2",
+                url=bot.invitelink2
+            )
+        ]
     ]
-]
     try:
         buttons.append(
             [
@@ -155,6 +161,11 @@ async def not_joined(client: Client, message: Message):
         )
     except IndexError:
         pass
+
+    await message.reply_text(
+        "Please join the channels below to use the bot:",
+        reply_markup=InlineKeyboardMarkup(buttons)
+    )
 
 
     await message.reply(
