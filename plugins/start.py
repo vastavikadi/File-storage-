@@ -1,14 +1,16 @@
 import os
 import asyncio
-from pyrogram import Client, filters
+from pyrogram import Client, filters, __version__
 from pyrogram.enums import ParseMode, ChatMemberStatus
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated, UserNotParticipant
+from pyrogram.raw.functions.contacts import ResolveUsername
 
 from bot import Bot
-from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT, CHANNEL_1, CHANNEL_2
+from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT, CHANNEL_1_ID, CHANNEL_2_ID, CHANNEL_1_LINK, CHANNEL_2_LINK
 from helper_func import subscribed, encode, decode, get_messages
 from database.database import add_user, del_user, full_userbase, present_user
+
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
@@ -57,7 +59,8 @@ async def start_command(client: Client, message: Message):
 
         for msg in messages:
             if bool(CUSTOM_CAPTION) & bool(msg.document):
-                caption = CUSTOM_CAPTION.format(previouscaption="" if not msg.caption else msg.caption.html, filename=msg.document.file_name)
+                caption = CUSTOM_CAPTION.format(previouscaption="" if not msg.caption else msg.caption.html,
+                                                filename=msg.document.file_name)
             else:
                 caption = "" if not msg.caption else msg.caption.html
 
@@ -67,11 +70,13 @@ async def start_command(client: Client, message: Message):
                 reply_markup = None
 
             try:
-                await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
+                await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML,
+                               reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
                 await asyncio.sleep(0.5)
             except FloodWait as e:
                 await asyncio.sleep(e.x)
-                await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
+                await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML,
+                               reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
             except:
                 pass
         return
@@ -98,27 +103,26 @@ async def start_command(client: Client, message: Message):
         )
         return
 
-#=====================================================================================##
-
-WAIT_MSG = """<b>Processing ...</b>"""
-
-REPLY_ERROR = """<code>Use this command as a reply to any telegram message without any spaces.</code>"""
-
-#=====================================================================================##
 
 async def is_user_in_channels(client: Client, user_id: int) -> bool:
     try:
-        member_1 = await client.get_chat_member(chat_id=CHANNEL_1, user_id=user_id)
-        member_2 = await client.get_chat_member(chat_id=CHANNEL_2, user_id=user_id)
+        print(f"Checking membership for user {user_id} in channel {CHANNEL_1_ID}")
+        member_1 = await client.get_chat_member(chat_id=int(CHANNEL_1_ID), user_id=user_id)
+        member_2 = await client.get_chat_member(chat_id=int(CHANNEL_2_ID), user_id=user_id)
         if member_1.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]:
             return False
         if member_2.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]:
             return False
         return True
     except UserNotParticipant:
+        print(f"User {user_id} is not a participant in one of the channels.")
+        return False
+    except Exception as e:
+        print(f"Error checking membership: {e}")
         return False
 
-@Bot.on_message(filters.command('start') & filters.private)
+
+@Client.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     user_id = message.from_user.id
     if not await is_user_in_channels(client, user_id):
@@ -126,22 +130,27 @@ async def not_joined(client: Client, message: Message):
             [
                 InlineKeyboardButton(
                     "Join Anime Plaza",
-                    url=f"https://t.me/{CHANNEL_1}"
+                    url=CHANNEL_1_LINK
                 )
             ],
             [
                 InlineKeyboardButton(
                     "Join Cinema Channel",
-                    url=f"https://t.me/{CHANNEL_2}"
-                )
-            ],
-            [
-                InlineKeyboardButton(
-                    text='Try Again',
-                    url=f"https://t.me/{client.username}?start={message.command[1]}"
+                    url=CHANNEL_2_LINK
                 )
             ]
         ]
+        try:
+            buttons.append(
+                [
+                    InlineKeyboardButton(
+                        text='Try Again',
+                        url=f"https://t.me/{client.username}?start={message.command[1]}"
+                    )
+                ]
+            )
+        except IndexError:
+            pass
         await message.reply_text(
             "Please join the channels below to use the bot:",
             reply_markup=InlineKeyboardMarkup(buttons)
@@ -149,11 +158,13 @@ async def not_joined(client: Client, message: Message):
     else:
         await message.reply_text("You have access to use the bot now.")
 
+
 @Bot.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
 async def get_users(client: Bot, message: Message):
-    msg = await client.send_message(chat_id=message.chat.id, text=WAIT_MSG)
+    msg = await client.send_message(chat_id=message.chat.id, text="Processing ...")
     users = await full_userbase()
     await msg.edit(f"{len(users)} users are using this bot")
+
 
 @Bot.on_message(filters.private & filters.command('broadcast') & filters.user(ADMINS))
 async def send_text(client: Bot, message: Message):
@@ -195,7 +206,8 @@ Deleted Accounts: <code>{deleted}</code>
 Unsuccessful: <code>{unsuccessful}</code></b>"""
 
         return await pls_wait.edit(status)
+
     else:
-        msg = await message.reply(REPLY_ERROR)
+        msg = await message.reply("Use this command as a reply to any telegram message without any spaces.")
         await asyncio.sleep(8)
         await msg.delete()
