@@ -31,30 +31,22 @@ class Bot(Client):
         await super().start()
         usr_bot_me = await self.get_me()
         self.uptime = datetime.now()
+    async def export_invite_links(self):
+        await self.export_invite_link(FORCE_SUB_CHANNEL, 'invitelink1')
+        await self.export_invite_link(FORCE_SUB_CHANNEL2, 'invitelink2')
 
-        if FORCE_SUB_CHANNEL:
+    async def export_invite_link(self, channel_id, link_attr):
+        if channel_id:
             try:
-                link = (await self.get_chat(FORCE_SUB_CHANNEL)).invite_link
-                if not link:
-                    await self.export_chat_invite_link(FORCE_SUB_CHANNEL)
-                    link = (await self.get_chat(FORCE_SUB_CHANNEL)).invite_link
-                self.invitelink = link
-            except Exception as a:
-                self.LOGGER(__name__).warning(a)
-                self.LOGGER(__name__).warning("Bot can't Export Invite link from Force Sub Channel!")
-                self.LOGGER(__name__).warning(f"Please Double check the FORCE_SUB_CHANNEL value and Make sure Bot is Admin in channel with Invite Users via Link Permission, Current Force Sub Channel Value: {FORCE_SUB_CHANNEL}")
-    async def export_invite_link(self):
-        if FORCE_SUB_CHANNEL2:
-            try:
-                chat = await self.get_chat(FORCE_SUB_CHANNEL2)
+                chat = await self.get_chat(channel_id)
                 link = chat.invite_link
                 if not link:
-                    link = await self.export_chat_invite_link(FORCE_SUB_CHANNEL2)
-                self.invitelink = link
-            except Exception as a:
-                self.LOGGER(__name__).warning(a)
-                self.LOGGER(__name__).warning("Bot can't Export Invite link from Force Sub Channel!")
-                self.LOGGER(__name__).warning(f"Please double-check the FORCE_SUB_CHANNEL2 value and make sure the bot is an admin in the channel with Invite Users via Link Permission. Current Force Sub Channel Value: {FORCE_SUB_CHANNEL2}")
+                    link = await self.export_chat_invite_link(channel_id)
+                setattr(self, link_attr, link)
+            except Exception as e:
+                self.LOGGER(__name__).warning(e)
+                self.LOGGER(__name__).warning(f"Bot can't Export Invite link from Force Sub Channel {channel_id}!")
+                self.LOGGER(__name__).warning(f"Please double-check the {link_attr} value and make sure the bot is an admin in the channel with Invite Users via Link Permission. Current Force Sub Channel Value: {channel_id}")
                 self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/paradoxdump for support")
                 sys.exit()
 
@@ -65,8 +57,6 @@ class Bot(Client):
     async def export_chat_invite_link(self, chat_id):
         # Implementation to export chat invite link
         pass
-                # self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/paradoxdump for support")
-#                sys.exit()
 
         try:
             db_channel = await self.get_chat(CHANNEL_ID)
