@@ -39,18 +39,28 @@ class Bot(Client):
                 self.LOGGER(__name__).warning(a)
                 self.LOGGER(__name__).warning("Bot can't Export Invite link from Force Sub Channel!")
                 self.LOGGER(__name__).warning(f"Please Double check the FORCE_SUB_CHANNEL value and Make sure Bot is Admin in channel with Invite Users via Link Permission, Current Force Sub Channel Value: {FORCE_SUB_CHANNEL}")
-
+    async def export_invite_link(self):
         if FORCE_SUB_CHANNEL2:
             try:
-                link = (await self.get_chat(FORCE_SUB_CHANNEL2)).invite_link
+                chat = await self.get_chat(FORCE_SUB_CHANNEL2)
+                link = chat.invite_link
                 if not link:
-                    await self.export_chat_invite_link(FORCE_SUB_CHANNEL2)
-                    link = (await self.get_chat(FORCE_SUB_CHANNEL2)).invite_link
+                    link = await self.export_chat_invite_link(FORCE_SUB_CHANNEL2)
                 self.invitelink = link
             except Exception as a:
                 self.LOGGER(__name__).warning(a)
                 self.LOGGER(__name__).warning("Bot can't Export Invite link from Force Sub Channel!")
-                self.LOGGER(__name__).warning(f"Please Double check the FORCE_SUB_CHANNEL2 value and Make sure Bot is Admin in channel with Invite Users via Link Permission, Current Force Sub Channel Value: {FORCE_SUB_CHANNEL2}")
+                self.LOGGER(__name__).warning(f"Please double-check the FORCE_SUB_CHANNEL2 value and make sure the bot is an admin in the channel with Invite Users via Link Permission. Current Force Sub Channel Value: {FORCE_SUB_CHANNEL2}")
+                self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/paradoxdump for support")
+                sys.exit()
+
+    async def get_chat(self, chat_id):
+        # Implementation to get chat details
+        pass
+    
+    async def export_chat_invite_link(self, chat_id):
+        # Implementation to export chat invite link
+        pass
                 self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/paradoxdump for support")
                 sys.exit()
 
