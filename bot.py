@@ -65,7 +65,7 @@ class Bot(Client):
     async def export_chat_invite_link(self, chat_id):
         # Implementation to export chat invite link
         pass
-                self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/paradoxdump for support")
+                # self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/paradoxdump for support")
                 sys.exit()
 
         try:
