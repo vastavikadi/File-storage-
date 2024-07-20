@@ -66,7 +66,7 @@ class Bot(Client):
         # Implementation to export chat invite link
         pass
                 # self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/paradoxdump for support")
-                sys.exit()
+#                sys.exit()
 
         try:
             db_channel = await self.get_chat(CHANNEL_ID)
