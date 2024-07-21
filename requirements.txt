@@ -8,3 +8,5 @@ dnspython
 # --- For-Web-Response ------- #
 aiohttp
 motor==3.3.2
+Flask==2.2.2
+gunicorn==20.1.0
