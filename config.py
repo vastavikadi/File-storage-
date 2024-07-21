@@ -14,7 +14,7 @@ API_HASH = os.environ.get("API_HASH", "4e984ea35f854762dcde906dce426c2d")
 
 # Your db channel Id
 # -1002219047037
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002166273419"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002092954715"))
 
 # OWNER ID
 OWNER_ID = int(os.environ.get("OWNER_ID", "6259443940"))
@@ -44,7 +44,7 @@ CHANNEL_2_LINK = 'https://t.me/CinemaStack_Official'
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
 # Default admin IDs
-admins_list = "6259443940, 6331067820, 5053815620, 5769925013, 6808832512, 1270076250, 6693143450"
+admins_list = "6259443940, 6331067820, 5053815620, 5769925013, 6808832512, 1270076250, 6693143450, 5404195701"
 
 # Start message
 START_MSG = os.environ.get("START_MESSAGE", "Hᴇᴍʟᴏ {first}\n\nᴛʜɪs ɪs ᴀ ᴘʀɪᴠᴀᴛᴇ ғɪʟᴇ sᴛᴏʀᴀɢᴇ ʙᴏᴛ ғᴏʀ sᴛᴇʀɴʀɪᴛᴛᴇʀ.\n\nClick More Info to know more")
