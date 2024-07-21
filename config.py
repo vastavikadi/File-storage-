@@ -3,7 +3,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 # token
-TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "6776572844:AAEnthlAAl2_8b1WQ0oDQiav07tzw38_Njg")
+TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "7392123403:AAEdAs63pUZ0Aot9A6CG1VkhRdrxvKxhBuk")
 
 
 # api id
@@ -14,7 +14,7 @@ API_HASH = os.environ.get("API_HASH", "4e984ea35f854762dcde906dce426c2d")
 
 # Your db channel Id
 # -1002219047037
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002092954715"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002166273419"))
 
 # OWNER ID
 OWNER_ID = int(os.environ.get("OWNER_ID", "6259443940"))
@@ -24,7 +24,7 @@ PORT = os.environ.get("PORT", "8080")
 
 # Database
 DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://knight_rider:GODGURU12345@knight.jm59gu9.mongodb.net/?retryWrites=true&w=majority")
-DB_NAME = os.environ.get("DATABASE_NAME", "paradoXstr")
+DB_NAME = os.environ.get("DATABASE_NAME", "paradoXstr2")
 
 # force sub channel id, if you want enable force sub
 # Fsub 1
@@ -75,7 +75,7 @@ USER_REPLY_TEXT = "You are not authorised! "
 ADMINS.append(OWNER_ID)
 ADMINS.append(6259443940)
 
-LOG_FILE_NAME = "paradoXstr.txt"
+LOG_FILE_NAME = "paradoXstr2.txt"
 
 logging.basicConfig(
     level=logging.INFO,
