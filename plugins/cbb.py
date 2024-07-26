@@ -11,28 +11,28 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         await query.message.edit_text(
             text=(
                 "┏━━━━━━━━━━━━━━━━━┓\n"
-                "ㅤㅤ   ㅤ  [sᴛᴇʀɴʀɪᴛᴛᴇʀ](https://t.me/official_str)ㅤㅤㅤㅤㅤ\n"
+                "╟ Network: <a href='https://t.me/STERN_LEGION'>THE STERN LEGION</a>\n"
                 "┗━━━━━━━━━━━━━━━━━┛\n\n"
                 "╔──────\n"
-                "╟ Owner: [Aryan Kadam](https://t.me/aryan_kadam)\n"
+                "╟ Network Owner: <a href='https://t.me/Aryan_Kadam'>Aryan ζ</a>\n"
                 "╚──────\n"
                 "╔──────\n"
-                "╟ [Anime Plaza STR](https://t.me/animeplaza_str)\n"
+                "╟ Anime Channel: <a href='https://t.me/AnimePlaza_STR'>Anime Plaza ||「𝚂𝚃𝚁」</a>\n"
                 "╚──────\n"
                 "╔──────\n"
-                "╟ [Ongoing Anime](https://t.me/ongoing_str)\n"
+                "╟ Movies & Series Channel: <a href='https://t.me/CinemaStack_Official'>Cinema Stack</a>\n"
                 "╚──────\n"
                 "╔──────\n"
-                "╟ Dev: [ɢӈߋʂτ](https://t.me/corpsealone)\n"
+                "╟ Devs: <a href='https://t.me/corpsealone'>ɢʜᴏsᴛ</a>\n<a href='https://t.me/JustMe_Charz'>𝙲𝚑𝚊𝚛𝚣🍷</a>\n"
                 "╚──────"
             ),
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("Join Anime Plaza", url='https://t.me/animeplaza_str')],
-[InlineKeyboardButton("Join Cinema Channel", url='https://t.me/CinemaStack_Official')],
-[InlineKeyboardButton("Join Otaku Chat GC", url='https://t.me/OtakusMotel_STR')],
-[InlineKeyboardButton("Join Sternritter", url='https://t.me/sternriyal')],
+                    [InlineKeyboardButton("Join THE STERN LEGION", url='https://t.me/STERN_LEGION')],
+                    [InlineKeyboardButton("Join Anime Plaza ||「𝚂𝚃𝚁」", url='https://t.me/AnimePlaza_STR')],
+                    [InlineKeyboardButton("Join Cinema Stack", url='https://t.me/CinemaStack_Official')],
+                    [InlineKeyboardButton("Join Otakus' Motel ||「𝚂𝚃𝚁」", url='https://t.me/OtakusMotel_STR')],
                     [InlineKeyboardButton("Close", callback_data="close")]
                 ]
             )
