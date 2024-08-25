@@ -7,7 +7,7 @@ from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated, User
 from pyrogram.raw.functions.contacts import ResolveUsername
 
 from bot import Bot
-from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT, CHANNEL_1_ID, CHANNEL_2_ID, CHANNEL_1_LINK, CHANNEL_2_LINK
+from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT, CHANNEL_1_ID, CHANNEL_2_ID, CHANNEL_1_LINK, CHANNEL_2_LINK, CHANNEL_3_ID, CHANNEL_3_LINK
 from helper_func import subscribed, encode, decode, get_messages
 from database.database import add_user, del_user, full_userbase, present_user
 
@@ -70,13 +70,25 @@ async def start_command(client: Client, message: Message):
                 reply_markup = None
 
             try:
-                await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML,
-                               reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
+                snt_msg = await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
                 await asyncio.sleep(0.5)
+                snt_msgs.append(snt_msg)
             except FloodWait as e:
                 await asyncio.sleep(e.x)
-                await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML,
-                               reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
+                snt_msg = await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
+                snt_msgs.append(snt_msg)
+            except:
+                pass
+
+        SD = await message.reply_text("<b>⚠️ <u>NOTE</u>:</b> All files will be deleted after 30 min. Make sure to save them in your <b>Saved Messages</b> so you won't lose them.\n\nJoining <a href='https://t.me/STERN_LEGION'>THE STERN LEGION</a>, <a href='https://t.me/AnimePlaza_STR'>Anime Plaza ||「𝚂𝚃𝚁」</a> and <a href='https://t.me/CinemaStack_Official'>Cinema Stack</a> is must to use the bot."),
+        disable_web_page_preview=True
+        
+        await asyncio.sleep(1800)
+
+        for snt_msg in snt_msgs:
+            try:
+                await snt_msg.delete()
+                await SD.delete()
             except:
                 pass
         return
