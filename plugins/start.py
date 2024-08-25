@@ -121,9 +121,12 @@ async def is_user_in_channels(client: Client, user_id: int) -> bool:
         print(f"Checking membership for user {user_id} in channel {CHANNEL_1_ID}")
         member_1 = await client.get_chat_member(chat_id=int(CHANNEL_1_ID), user_id=user_id)
         member_2 = await client.get_chat_member(chat_id=int(CHANNEL_2_ID), user_id=user_id)
+        member_3 = await client.get_chat_member(chat_id=int(CHANNEL_3_ID), user_id=user_id)
         if member_1.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]:
             return False
         if member_2.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]:
+            return False
+        if member_3.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]:
             return False
         return True
     except UserNotParticipant:
@@ -141,14 +144,18 @@ async def not_joined(client: Client, message: Message):
         buttons = [
             [
                 InlineKeyboardButton(
-                    "Anime Plaza ||「𝚂𝚃𝚁」",
+                    "THE STERN LEGION",
                     url=CHANNEL_1_LINK
                 )
             ],
             [
                 InlineKeyboardButton(
-                    "Cinema Stack",
+                    "Anime Plaza ||「𝚂𝚃𝚁」",
                     url=CHANNEL_2_LINK
+                ),
+                InlineKeyboardButton(
+                    "Cinema Stack",
+                    url=CHANNEL_3_LINK
                 )
             ]
         ]
