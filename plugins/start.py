@@ -146,17 +146,17 @@ async def not_joined(client: Client, message: Message):
         buttons = [
             [
                 InlineKeyboardButton(
-                    "THE STERN LEGION",
+                    "🇯🇵 𝗔𝗡𝗜𝗠𝗘 𝗣𝗟𝗔𝗭𝗔",
                     url=CHANNEL_1_LINK
+                ),
+                InlineKeyboardButton(
+                    "𝗖𝗜𝗡𝗘𝗠𝗔 𝗦𝗧𝗔𝗖𝗞 🎬",
+                    url=CHANNEL_2_LINK
                 )
             ],
             [
                 InlineKeyboardButton(
-                    "Anime Plaza ||「𝚂𝚃𝚁」",
-                    url=CHANNEL_2_LINK
-                ),
-                InlineKeyboardButton(
-                    "Cinema Stack",
+                    "🏢 𝗢𝗧𝗔𝗞𝗨𝗦' 𝗠𝗢𝗧𝗘𝗟 🏢",
                     url=CHANNEL_3_LINK
                 )
             ]
