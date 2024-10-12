@@ -1,14 +1,14 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from bot import Bot
-from config import OWNER_ID
+from config import ADMINS
 from helper_func import encode, get_message_id
 import os, sys, time, asyncio, logging, datetime
 
 
 is_restarting = False
 
-@Client.on_message(filters.private & filters.user(OWNER_ID) & filters.command('restart'))
+@Client.on_message(filters.user(ADMINS) & filters.command('restart'))
 async def restart_bot(b, m):
     global is_restarting
     if not is_restarting:
