@@ -21,7 +21,6 @@ class Bot(Client):
             bot_token=TG_BOT_TOKEN
         )
         self.LOGGER = LOGGER
-        self.web_app_runner = None  # For managing the web server
 
     async def start(self):
         await super().start()
@@ -35,9 +34,9 @@ class Bot(Client):
             await test.delete()
         except Exception as e:
             self.LOGGER(__name__).warning(e)
-            self.LOGGER(__name__).warning(f"Make sure the bot is Admin in the DB Channel, and double-check the CHANNEL_ID value, current value: {CHANNEL_ID}")
+            self.LOGGER(__name__).warning(f"Make Sure bot is Admin in DB Channel, and Double check the CHANNEL_ID Value, Current Value {CHANNEL_ID}")
             self.LOGGER(__name__).info("\nBot Stopped")
-            sys.exit(1)  # Exit with a non-zero status to indicate an error
+            sys.exit()
 
         self.set_parse_mode(ParseMode.HTML)
         self.LOGGER(__name__).info(f"Bot Running..!\n\nCreated by \nhttps://t.me/paradoxdump")
@@ -46,21 +45,18 @@ class Bot(Client):
                                           """)
         self.username = usr_bot_me.username
 
-        # Start the web server
-        self.web_app_runner = web.AppRunner(await web_server())
-        await self.web_app_runner.setup()
+        # web-response
+        app = web.AppRunner(await web_server())
+        await app.setup()
         bind_address = "0.0.0.0"
-        await web.TCPSite(self.web_app_runner, bind_address, PORT).start()
+        await web.TCPSite(app, bind_address, PORT).start()
 
     async def stop(self, *args):
-        # Stop the web server
-        if self.web_app_runner:
-            await self.web_app_runner.cleanup()
         await super().stop()
         self.LOGGER(__name__).info("Bot stopped.")
 
 # Initialize the bot
 bot = Bot()
 
-# Ensure the bot starts and stops properly
+# Ensure the bot starts
 bot.run()
