@@ -7,6 +7,9 @@ from pyrogram.enums import ParseMode
 from datetime import datetime
 import sys
 from config import API_HASH, API_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, CHANNEL_ID, PORT
+import pyrogram.utils
+
+pyrogram.utils.MIN_CHANNEL_ID = -1009147483647
 
 class Bot(Client):
     def __init__(self):
