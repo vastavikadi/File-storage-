@@ -22,8 +22,13 @@ OWNER_ID="6259443940,5053815620, 5297903100,6886483871,6331067820, 7339100806,66
 # Port
 PORT = os.environ.get("PORT", "7466")
 
+
+    MONGO_DB_URI= os.getenv("MONGO_DB_URI", "")
+
+
 # Database
-DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://arnavgupta0078:arnav@cluster3301.ojyvd.mongodb.net/?retryWrites=true&w=majority")
+DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://knight_rider:GODGURU12345@knight.jm59gu9.mongodb.net/?retryWrites=true&w=majority")
+
 DB_NAME = os.environ.get("DATABASE_NAME", "paradoXstr2")
 
 # force sub channel id, if you want enable force sub
