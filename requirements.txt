@@ -3,11 +3,11 @@ pyrogram
 TgCrypto
 pyromod==1.5
 # --- For-Database ------------ #
-pymongo==3.12.3
+pymongo
 dnspython
 # --- For-Web-Response ------- #
 aiohttp
-motor==2.5.1
+motor==3.3.2
 Flask==2.2.2
 gunicorn==20.1.0
-werkzeug==2.2.2
+#werkzeug==2.2.2
