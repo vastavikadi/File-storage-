@@ -7,7 +7,7 @@ from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated, User
 from pyrogram.raw.functions.contacts import ResolveUsername
 
 from bot import Bot
-from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT, CHANNEL_1_ID, CHANNEL_2_ID, CHANNEL_1_LINK, CHANNEL_2_LINK, CHANNEL_3_ID, CHANNEL_3_LINK
+from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT, CHANNEL_1_ID, CHANNEL_2_ID, CHANNEL_1_LINK, CHANNEL_2_LINK
 from helper_func import subscribed, encode, decode, get_messages
 from database.database import add_user, del_user, full_userbase, present_user
 
