@@ -11,3 +11,4 @@ motor==2.5.1
 Flask==2.2.2
 gunicorn==20.1.0
 werkzeug==2.2.2
+# do not play with this as it can lead to unstability of thw whole codebase or even complete failure

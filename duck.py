@@ -58,7 +58,7 @@ class Bot(Client):
             sys.exit()
 
         self.set_parse_mode(ParseMode.HTML)
-        logger.info(f"Bot Running..!\n\nDev \n@corpsealone")
+        logger.info(f"Bot Running..!\n\nDev \n@corpsealone\n@vastavikadi")
         logger.info(f""" \n\n       
                [PARADOX] \n\n
                                                    

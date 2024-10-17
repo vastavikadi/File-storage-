@@ -23,8 +23,9 @@
 </p>
 
 
-Telegram Bot to store Posts and Documents and it can Access by Special Links.
-I Guess This Will Be Usefull For Many People.....😇. 
+Telegram Bot to store Posts and Documents and it can be accessed by Special Links.
+It has the additional features like force sub that can help you grow your channels, groups or similar.
+I Guess This Will Be Useful For Many People.....😇. 
 
 ##
 
@@ -32,7 +33,8 @@ I Guess This Will Be Usefull For Many People.....😇.
 
 **Make sure to see [contributing.md](https://github.com/CodeXBotz/File-Sharing-Bot/blob/main/CONTRIBUTING.md) for instructions on contributing to the project!**
 
-
+### NOTE
+Docker file is suggested to be used for the builds and dont play with the environment variables while deploying on KOYEB
 
 ### Features
 - Fully customisable.
@@ -152,6 +154,10 @@ will. Specifically you can redistribute and/or modify it under the terms of the
 [GNU General Public License](https://www.gnu.org/licenses/gpl.html) as
 published by the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version. 
+
+### OUR CONTRIBUTORS
+@vastavikadi
+@corpsealone
 
 ##
 

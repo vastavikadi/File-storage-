@@ -23,7 +23,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
                 "╟ Movies & Series Channel: <a href='https://t.me/CinemaStack_Official'>Cinema Stack</a>\n"
                 "╚──────\n"
                 "╔──────\n"
-                "╟ Devs: <a href='https://t.me/corpsealone'>ɢʜᴏsᴛ</a>\n<a href='https://t.me/JustMe_Charz'>𝙲𝚑𝚊𝚛𝚣🍷</a>\n"
+                "╟ Devs: <a href='https://t.me/corpsealone'>ɢʜᴏsᴛ</a>\n<a href='https://t.me/JustMe_Charz'>𝙲𝚑𝚊𝚛𝚣🍷</a>\n<a href='vastavikportfolio.vercel.app'>VastavikAdi</a>\n"
                 "╚──────"
             ),
             disable_web_page_preview=True,
